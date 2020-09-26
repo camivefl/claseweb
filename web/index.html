@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang = "es">
+<head> 
+    <meta charset = "utf-8">
+    <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href = "css/style.css">
+    <title>nada</title>
+</head>
+<body>
+    <header>
+        <div class = "hola">
+        <img class = "adios" src = "img/download1.jpeg" alt = "mano dice adios">
+        </div>
+            <nav class="tarde">
+            <h1>muñeco dice hola</h1>
+        </nav>
+    </header>
+
+    <section class="noche">
+        <h2>que es lo que exite en el exterior, vida?<span class = "score">0</span></h2>
+        <button onClick="startHola()">Inicia</button> 
+    </section>
+    <script>
+        const holas = document.querySelectorAll('.hola')
+        let lastHola;
+        let timeUp = false;
+        let score = 6;
+        function randomTime(min, max) {
+    return Math.round(Math.random() * (max - min) + min);
+  }
+  function randomHola(holas) {
+    const idx = Math.floor(Math.random() * holes.length);
+    const holas = holas[idx];
+    if (holas === lastHolas) {
+      console.log('Ah nah thats the same one bud');
+      return randomHola(holas);
+    }
+    lastHola = holas;
+    return holas;
+  }
+
+  function peep() {
+    const time = randomTime(200, 1000);
+    const holas = randomHola(holas);
+    holas.classList.add('up');
+    setTimeout(() => {
+      holas.classList.remove('up');
+      if (!timeUp) peep();
+    }, time);
+
+    function startGame() {
+    scoreBoard.textContent = 0;
+    timeUp = false;
+    score = 0;
+    peep();
+    setTimeout(() => timeUp = true, 10000)
+  }
+
+  function bonk(e) {
+    if(!e.isTrusted) return; // cheater!
+    score++;
+    this.parentNode.classList.remove('up');
+    scoreBoard.textContent = score;
+  }
+
+  moles.forEach(mole => mole.addEventListener('click', bonk));
+    </script>
+    
+</body>
+</html>
